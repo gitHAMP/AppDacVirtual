@@ -37,15 +37,22 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
         <h1 class="logo mr-auto"><a href="https://githamp.github.io/DacVirtual/index.html">DAC Virtual</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <!--<li class="active"><a href="index.html">Inicio</a></li>-->
-                <!--<li><a href="#eventos">Eventos</a></li> -->
+                <li class="active"><a href="https://githamp.github.io/DacVirtual/index.html">Inicio</a></li>
+                <li class="drop-down"><a href="#">Regreso Campus</a>
+                    <ul>
+                        <li><a href="https://app-dacvirtual.herokuapp.com/courses/schedule">Horarios 2021-00</a></li>
+                    </ul>
+                </li>
+                <li class="drop-down"><a href="#">Eventos</a>
+                    <ul>
+                        <li><a href="2020.html">2020</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav><!-- .nav-menu -->
     </div>
@@ -57,7 +64,7 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Horario de Cursos Semipresenciales - #Regresoacampus202100</h2>
+                <h2>Horario de Cursos Semipresenciales</h2>
                 <ol>
                     <li><a href="https://githamp.github.io/DacVirtual/index.html">Inicio</a></li>
                     <li>Horario de Cursos Semipresenciales</li>
@@ -85,10 +92,10 @@
             </div>
             <nav th:replace="paginator/paginator-nav :: paginator"></nav>
         </div>
-
     </section><!-- End About Video Section -->
+</main>
 
-    <footer><
+    <footer>
     <div class="container d-md-flex py-4">
 
         <div class="mr-md-auto text-center text-md-left">

@@ -32,7 +32,7 @@ public class CourseController {
                                   Model model) {
 
         try {
-            Pageable pageRequest = PageRequest.of(page, 4);
+            Pageable pageRequest = PageRequest.of(page, 6);
 
             Page<Course> courses = courseService.getAllCourses(pageRequest,day,week);
 

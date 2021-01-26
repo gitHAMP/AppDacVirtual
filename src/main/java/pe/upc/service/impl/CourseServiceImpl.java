@@ -33,6 +33,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<Course> getAllCoursesByWeek(Long id) throws Exception {
+        return courseRepository.findAllCoursesByWeek(id);
+    }
+
+    @Override
     public Course saveOrUpdate(Course entity) throws Exception {
         return courseRepository.save(entity);
     }

@@ -16,5 +16,9 @@ public interface CourseRepository extends PagingAndSortingRepository<Course,Long
       @Query("SELECT c FROM Course c WHERE c.day.name=?1 AND c.week.name=?2 ORDER BY c.startTime, c.endTime")
       Page<Course> findAllCourses(Pageable pageable,String day, String week);
 
+      @Query("SELECT c FROM Course c WHERE c.week.id=?1 ORDER BY c.startTime, c.endTime")
+      //Page<Course> findAllCoursesByWeek(Pageable pageable, String week);
+      List<Course> findAllCoursesByWeek(Long id);
+
 
 }

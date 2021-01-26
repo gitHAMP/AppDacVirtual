@@ -82,7 +82,7 @@
         </div>
 
         <div class="container">
-            <h5 th:text="${week}"></h5>
+            <h5 th:text="${week}+'-- Día:'+${day}"></h5>
 
             <div class="row">
                 <div th:each="course:${courses}" class="col-sm-6">

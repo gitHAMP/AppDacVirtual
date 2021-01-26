@@ -28,7 +28,7 @@ public class DacApplication implements CommandLineRunner {
 
         String password = "equipodac";
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 14; i++) {
             String bcryptPassword = passwordEncoder.encode(password);
             System.out.println(bcryptPassword);
         }

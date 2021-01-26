@@ -40,6 +40,7 @@ public class CourseController {
 
             model.addAttribute("title", "Cursos Semipresenciales");
 
+            model.addAttribute("week", week);
             model.addAttribute("courses", courses);
             model.addAttribute("page", pageRender);
 

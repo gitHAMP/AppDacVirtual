@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>DAC - Virtual</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../../assets/img/favicon.png" rel="icon">
+    <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="../../assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="../../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../../assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v9.0&appId=300104436991036&autoLogAppEvents=1" nonce="hE6DFgF6"></script>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+        <h1 class="logo mr-auto"><a href="https://githamp.github.io/DacVirtual/index.html">DAC Virtual</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li>
+                    <form id="logoutForm" th:action="@{/logout}" method="post">
+                        <button class="btn btn-light"
+                                onclick="document.getElementById('logoutForm').submit();"
+                                type="submit">Cerrar sesion</button>
+                    </form>
+                </li>
+            </ul>
+        </nav><!-- .nav-menu -->
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Reporte de segumiento</h2>
+                <ol>
+                    <li><a href="#" th:href="@{'/courses/schedule'}">Horarios</a></li>
+                    <li>Reporte</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= About Video Section ======= -->
+    <section id="eventos" class="about-video">
+        <div class="container">
+            <div class="row">
+                <div class="card border-dark mb-3" style="max-width: 50rem;">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+
+                <div class="card-header text-white bg-danger">Registro de reporte</div>
+                <div class="card-body">
+                    <ul class="list-group my-2">
+                        <li class="list-group-item" th:text="${course.name}"></li>
+                        <li class="list-group-item" th:text="'Hora Inicio: '+${course.startTime}+'- Hora Fin: '+${course.endTime}"></li>
+                        <li class="list-group-item" th:text="'Sección: '+${course.section}+'- Aula: '+${course.classroom}"></li>
+                    </ul>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div th:object="${campusMonitoring}" th:remove="tag">
+                        <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+                            role="alert">
+                            <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
+
+                    <form th:action="@{/campusmonitoring/save}" th:object="${campusMonitoring}" method="post">
+                        <div class="form-group">
+                            <label for="askClasses" class="col-sm-6 col-form-label">¿Hubo algun problema en el desarrollo de la clase?</label>
+                            <div class="col-sm-12">
+                                <select class="form-control form-select-lg mb-3" aria-label=".form-select-lg example" th:field="*{askClasses}">
+                                    <option value="No" selected>No</option>
+                                    <option value="Si">Si</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="askSecurityProtocol" class="col-sm-6 col-form-label">¿Se respetaron los protocolos de seguridad durante la clase?</label>
+                            <div class="col-sm-12">
+                                <select class="form-control form-select-lg mb-3" aria-label=".form-select-lg example" th:field="*{askSecurityProtocol}">
+                                    <option value="No" selected>No</option>
+                                    <option value="Si">Si</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="askInternet" class="col-sm-6 col-form-label">¿Hubo algun problema con el internet?</label>
+                            <div class="col-sm-12">
+                                <select class="form-control form-select-lg mb-3" aria-label=".form-select-lg example" th:field="*{askInternet}">
+                                    <option value="No" selected>No</option>
+                                    <option value="Si">Si</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="askElectricFluid" class="col-sm-6 col-form-label">¿Hubo algun problema con el fluido electrico?</label>
+                            <div class="col-sm-12">
+                                <select class="form-control form-select-lg mb-3" aria-label=".form-select-lg example" th:field="*{askElectricFluid}">
+                                    <option value="No" selected>No</option>
+                                    <option value="Si">Si</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="actionsDone" class="col-sm-6 col-form-label">Acciones realizadas</label>
+                            <div class="col-sm-12">
+                                <textarea type="text" th:field="*{actionsDone}" class="form-control"
+                                       th:errorclass="'form-control alert-danger'"></textarea>  <small
+                                    class="form-text text-danger"
+                                    th:if="${#fields.hasErrors('actionsDone')}" th:errors="*{actionsDone}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recommendations" class="col-sm-6 col-form-label">Recomendaciones</label>
+                            <div class="col-sm-12">
+                                <textarea type="text" th:field="*{recommendations}" class="form-control"
+                                          th:errorclass="'form-control alert-danger'"> </textarea> <small
+                                    class="form-text text-danger"
+                                    th:if="${#fields.hasErrors('recommendations')}" th:errors="*{recommendations}"></small>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <input type="submit" th:value="${title}"
+                                       class="btn btn-danger" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+    </section><!-- End About Video Section -->
+</main>
+
+<footer>
+    <div class="container d-md-flex py-4">
+
+        <div class="mr-md-auto text-center text-md-left">
+            <div class="copyright">
+                &copy; Copyright <strong><span>DAC-San Miguel</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
+                Designed by <a href="https://github.com/githamp" target="_blank">hampcode</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+<script src="../../assets/vendor/counterup/counterup.min.js"></script>
+<script src="../../assets/vendor/venobox/venobox.min.js"></script>
+<script src="../../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

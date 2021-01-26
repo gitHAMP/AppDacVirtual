@@ -31,9 +31,15 @@
 </head>
 
 <body>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v9.0&appId=300104436991036&autoLogAppEvents=1" nonce="hE6DFgF6"></script>
+<section class="breadcrumbs">
+    <div class="container">
 
+        <div class="d-flex justify-content-between align-items-center">
+
+        </div>
+
+    </div>
+</section><!-- End Breadcrumbs -->
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
@@ -42,12 +48,11 @@
         <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li>
-                    <form id="logoutForm" th:action="@{/logout}" method="post">
-                        <button class="btn btn-light"
-                                onclick="document.getElementById('logoutForm').submit();"
-                                type="submit">Cerrar sesion</button>
-                    </form>
+                <li class="active"><a href="https://githamp.github.io/DacVirtual/index.html">Inicio</a></li>
+                <li class="drop-down"><a href="#">Eventos</a>
+                    <ul>
+                        <li><a href="https://githamp.github.io/DacVirtual/2020.html">2020</a></li>
+                    </ul>
                 </li>
             </ul>
         </nav><!-- .nav-menu -->
@@ -56,51 +61,42 @@
 
 <main id="main">
 
-
-
-    <section class="breadcrumbs">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Horarios</h2>
-                <ol>
-                    <li><a href="#" th:href="@{/dashboard/dashboard}">Dashboard</a></li>
-                    <li>Horarios</li>
-                </ol>
-            </div>
-
-        </div>
-    </section><!-- End Breadcrumbs -->
-
     <!-- ======= About Video Section ======= -->
     <section id="eventos" class="about-video">
-        <div class="container">
-            <div class="row">
-                <div class="card border-dark mb-3" style="max-width: 50rem;">
-
+        <div class="container" data-aos="fade-up">
+            <div class="card">
+                <div class="card-header">
+                    DAC Virtual
                 </div>
-            </div>
-        </div>
+                <div class="card-body table-responsive">
+                    <form th:action="@{/login}" method="post">
 
-        <div class="container">
-            <h5 th:text="${week}"></h5>
-
-            <div class="row">
-                <div th:each="course:${courses}" class="col-sm-6">
-                    <div class="card border-dark mb-3" style="max-width: 50rem;">
-                        <div class="card-body">
-                            <h5 th:text="${course.name}" class="card-title"></h5>
-                            <h5 th:text="'De: '+${course.startTime}+' hasta: '+${course.endTime}" class="card-title"></h5>
-                            Sección | Aula<p th:text="${course.section}+'|'+ ${course.classroom}" class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <!--Semana | Día | Fecha<p th:text="${course.week.name}+'|'+${course.day.name}+'|'+${course.sessionDate}" class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-                            Tipo Curso | Campus  <p th:text="${course.courseType.name}+'|'+ ${course.campus.name}" class="card-text"></p>
-                            <a href="#" th:href="@{'/campusmonitoring/new/' + ${course.id}}" class="btn btn-danger">Ingresar reporte</a>
+                        <div class="form-group">
+                            <input type="text" name="username" id="username"
+                                   class="form-control" placeholder="usuario" autofocus required />
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                            <input type="password" name="password" id="password"
+                                   class="form-control" placeholder="clave" required />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-lg btn-danger btn-block"
+                                   value="Iniciar sesión" />
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="alert alert-success" th:if="${success != null}"
+                         th:text="${success}"></div>
+                    <div class="alert alert-danger" th:if="${error != null}"
+                         th:text="${error}"></div>
+                    <div class="alert alert-info" th:if="${info != null}"
+                         th:text="${info}"></div>
                 </div>
             </div>
-            <nav th:replace="paginator/paginator-nav :: paginator"></nav>
         </div>
-
     </section><!-- End About Video Section -->
 </main>
 

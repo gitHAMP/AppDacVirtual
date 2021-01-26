@@ -58,18 +58,6 @@
 
 
 
-    <section class="breadcrumbs">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Horarios</h2>
-                <ol>
-                    <li><a href="#" th:href="@{/dashboard/dashboard}">Dashboard</a></li>
-                    <li>Horarios</li>
-                </ol>
-            </div>
-
-        </div>
-    </section><!-- End Breadcrumbs -->
 
     <!-- ======= About Video Section ======= -->
     <section id="eventos" class="about-video">
@@ -82,23 +70,13 @@
         </div>
 
         <div class="container">
-            <h5 th:text="${week}"></h5>
-
-            <div class="row">
-                <div th:each="course:${courses}" class="col-sm-6">
-                    <div class="card border-dark mb-3" style="max-width: 50rem;">
-                        <div class="card-body">
-                            <h5 th:text="${course.name}" class="card-title"></h5>
-                            <h5 th:text="'De: '+${course.startTime}+' hasta: '+${course.endTime}" class="card-title"></h5>
-                            Sección | Aula<p th:text="${course.section}+'|'+ ${course.classroom}" class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <!--Semana | Día | Fecha<p th:text="${course.week.name}+'|'+${course.day.name}+'|'+${course.sessionDate}" class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-                            Tipo Curso | Campus  <p th:text="${course.courseType.name}+'|'+ ${course.campus.name}" class="card-text"></p>
-                            <a href="#" th:href="@{'/campusmonitoring/new/' + ${course.id}}" class="btn btn-danger">Ingresar reporte</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-header text-white bg-danger">Tu reporte no se ha registrado correctamente, intentalo nuevamente</div>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a th:href="@{'/courses/schedule'}"
+                       class="btn btn-light btn-xs">&laquo; Regresar</a>
+                </h4>
             </div>
-            <nav th:replace="paginator/paginator-nav :: paginator"></nav>
         </div>
 
     </section><!-- End About Video Section -->

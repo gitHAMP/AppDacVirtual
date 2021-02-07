@@ -27,8 +27,8 @@ public class CourseController {
 
     @GetMapping(value = "/schedule")
     public String getAllCustomers(@RequestParam(name = "page", defaultValue = "0") int page,
-                                  @RequestParam(name = "day", defaultValue = "Viernes") String day,
-                                  @RequestParam(name = "week", defaultValue = "Semana 4") String week,
+                                  @RequestParam(name = "day", defaultValue = "Lunes") String day,
+                                  @RequestParam(name = "week", defaultValue = "Semana 5") String week,
                                   Model model) {
 
         try {
